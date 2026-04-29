@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "nome": "Praia Central",
+        "cidade": "Balneário Camboriú",
+        "status": "Imprópria",
+        "dataAtualizacao": "2026-04-25",
+        "motivo": "Alto nível de coliformes fecais",
+        "descricao": "Trechos com qualidade comprometida após chuvas recentes",
+        "temperaturaAgua": 24,
+        "avaliacoes": 12
+    },
+    {
+        "id": 2,
+        "nome": "Praia de Laranjeiras",
+        "cidade": "Balneário Camboriú",
+        "status": "Própria",
+        "dataAtualizacao": "2026-04-25",
+        "motivo": "Água em boas condições",
+        "descricao": "Boa qualidade para banho e atividades aquáticas",
+        "temperaturaAgua": 23,
+        "avaliacoes": 25
+    },
+    {
+        "id": 3,
+        "nome": "Praia do Estaleiro",
+        "cidade": "Balneário Camboriú",
+        "status": "Própria",
+        "dataAtualizacao": "2026-04-25",
+        "motivo": "Baixo índice de poluição",
+        "descricao": "Praia mais preservada, ideal para banho",
+        "temperaturaAgua": 22,
+        "avaliacoes": 18
+    },
+    {
+        "id": 4,
+        "nome": "Praia do Estaleirinho",
+        "cidade": "Balneário Camboriú",
+        "status": "Própria",
+        "dataAtualizacao": "2026-04-25",
+        "motivo": "Boa qualidade da água",
+        "descricao": "Água limpa e própria para banho",
+        "temperaturaAgua": 22,
+        "avaliacoes": 20
+    },
+    {
+        "id": 5,
+        "nome": "Praia de Taquaras",
+        "cidade": "Balneário Camboriú",
+        "status": "Própria",
+        "dataAtualizacao": "2026-04-25",
+        "motivo": "Níveis aceitáveis de qualidade",
+        "descricao": "Praia tranquila e limpa",
+        "temperaturaAgua": 22,
+        "avaliacoes": 14
+    },
+    {
+        "id": 6,
+        "nome": "Praia de Taquarinhas",
+        "cidade": "Balneário Camboriú",
+        "status": "Própria",
+        "dataAtualizacao": "2026-04-25",
+        "motivo": "Área preservada",
+        "descricao": "Praia com pouca intervenção humana",
+        "temperaturaAgua": 21,
+        "avaliacoes": 9
+    },
+    {
+        "id": 7,
+        "nome": "Praia Brava",
+        "cidade": "Itajaí",
+        "status": "Própria",
+        "dataAtualizacao": "2026-04-25",
+        "motivo": "Boa circulação de água",
+        "descricao": "Muito frequentada por surfistas",
+        "temperaturaAgua": 23,
+        "avaliacoes": 30
+    },
+    {
+        "id": 8,
+        "nome": "Praia de Cabeçudas",
+        "cidade": "Itajaí",
+        "status": "Imprópria",
+        "dataAtualizacao": "2026-04-25",
+        "motivo": "Contaminação detectada",
+        "descricao": "Evitar banho até nova análise",
+        "temperaturaAgua": 23,
+        "avaliacoes": 11
+    },
+    {
+        "id": 9,
+        "nome": "Praia de Navegantes",
+        "cidade": "Navegantes",
+        "status": "Própria",
+        "dataAtualizacao": "2026-04-25",
+        "motivo": "Qualidade dentro dos padrões",
+        "descricao": "Extensa faixa de areia e boa balneabilidade",
+        "temperaturaAgua": 23,
+        "avaliacoes": 16
+    },
+    {
+        "id": 10,
+        "nome": "Praia do Atalaia",
+        "cidade": "Itajaí",
+        "status": "Imprópria",
+        "dataAtualizacao": "2026-04-25",
+        "motivo": "Índice elevado de poluentes",
+        "descricao": "Não recomendada para banho",
+        "temperaturaAgua": 22,
+        "avaliacoes": 8
+    }
+]
