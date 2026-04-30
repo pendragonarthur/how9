@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌊 Monitor de Praias — Balneário Camboriú e Região
 
-## Getting Started
+Aplicação web para consulta em tempo real da **balneabilidade das praias** de Balneário Camboriú e região, com clima atual, filtros e sistema de avaliação.
 
-First, run the development server:
+---
+
+## ✨ Funcionalidades
+
+- **Consulta de balneabilidade** — visualize quais praias estão próprias ou impróprias para banho
+- **Filtros de status** — filtre por Todas, Próprias ou Impróprias
+- **Busca por nome** — encontre rapidamente uma praia específica
+- **Ordenação por avaliações** — ordene as praias por quantidade ou média de avaliações
+- **Sistema de avaliação** — avalie praias com notas de 1 a 5 (persistido via localStorage)
+- **Clima em tempo real** — temperatura e condição atual de Balneário Camboriú via [Open-Meteo](https://open-meteo.com/) (sem API key)
+- **Data da última atualização** — sempre visível no hero da página
+
+---
+
+## 🛠 Stack
+
+| Tecnologia | Uso |
+|---|---|
+| [Next.js 16](https://nextjs.org/) | Framework React com App Router |
+| [React 19](https://react.dev/) | Biblioteca de UI |
+| [TypeScript 5](https://www.typescriptlang.org/) | Tipagem estática |
+| [Tailwind CSS 4](https://tailwindcss.com/) | Estilização utilitária |
+| [shadcn/ui](https://ui.shadcn.com/) | Componentes de UI acessíveis (Radix UI) |
+| [Motion](https://motion.dev/) | Animações |
+| [Lucide React](https://lucide.dev/) | Ícones |
+| [Open-Meteo API](https://open-meteo.com/) | Clima em tempo real (gratuito, sem key) |
+| `localStorage` | Persistência local das avaliações |
+
+---
+
+## 🚀 Como rodar localmente
+
+**Pré-requisitos:** Node.js 18+
 
 ```bash
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/how9.git
+cd how9
+
+# 2. Instale as dependências
+npm install
+
+# 3. Rode em modo de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse [http://localhost:3000](http://localhost:3000) no navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts disponíveis
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev      # Servidor de desenvolvimento
+npm run build    # Build de produção
+npm run start    # Inicia o build de produção
+npm run lint     # Verifica problemas de lint
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Estrutura do projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+how9/
+├── app/
+│   ├── page.tsx          # Página principal (Home)
+│   └── layout.tsx        # Layout global
+├── components/
+│   ├── PraiaCard.tsx     # Card de cada praia
+│   ├── Dropdown.tsx      # Seletor de ordenação
+│   └── ui/               # Componentes shadcn/ui
+├── hooks/
+│   └── useWeather.ts     # Hook para buscar clima via Open-Meteo
+├── data/
+│   └── praias.ts         # Dados estáticos das praias
+├── public/
+│   └── bc.jpg            # Imagem de fundo do hero
+└── ...
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🌡️ Integração com clima (Open-Meteo)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A temperatura e condição atual são buscadas da [Open-Meteo API](https://open-meteo.com/) usando as coordenadas de Balneário Camboriú (`lat: -26.99, lng: -48.63`). A API é **gratuita e não requer cadastro ou API key**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+GET https://api.open-meteo.com/v1/forecast
+  ?latitude=-26.99
+  &longitude=-48.63
+  &current=temperature_2m,weather_code
+  &timezone=America/Sao_Paulo
+```
+
+---
+
+## ⭐ Sistema de Avaliações
+
+As avaliações dos usuários são salvas no **localStorage** do navegador — sem necessidade de backend. Ao avaliar uma praia, a nota é adicionada ao histórico, a média é recalculada e o estado é persistido automaticamente.
+
+> ⚠️ Limpar o cache/localStorage do navegador apaga as avaliações salvas.
+
+---
+
+## 📄 Licença
+
+Projeto de uso pessoal/educacional. Dados de balneabilidade são simulados — para informações oficiais consulte o [Instituto do Meio Ambiente de Santa Catarina (IMA)](https://www.ima.sc.gov.br/).
