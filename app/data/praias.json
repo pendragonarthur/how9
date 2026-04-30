@@ -8,7 +8,8 @@
         "motivo": "Alto nível de coliformes fecais",
         "descricao": "Trechos com qualidade comprometida após chuvas recentes",
         "temperaturaAgua": 24,
-        "avaliacoes": 12
+        "avaliacoes": 12,
+        "imageSrc": "/bc.jpg"
     },
     {
         "id": 2,
@@ -19,7 +20,8 @@
         "motivo": "Água em boas condições",
         "descricao": "Boa qualidade para banho e atividades aquáticas",
         "temperaturaAgua": 23,
-        "avaliacoes": 25
+        "avaliacoes": 25,
+        "imageSrc": "/laranjeiras.jpg"
     },
     {
         "id": 3,
@@ -30,7 +32,8 @@
         "motivo": "Baixo índice de poluição",
         "descricao": "Praia mais preservada, ideal para banho",
         "temperaturaAgua": 22,
-        "avaliacoes": 18
+        "avaliacoes": 18,
+        "imageSrc": "/estaleiro.jpg"
     },
     {
         "id": 4,
@@ -41,7 +44,8 @@
         "motivo": "Boa qualidade da água",
         "descricao": "Água limpa e própria para banho",
         "temperaturaAgua": 22,
-        "avaliacoes": 20
+        "avaliacoes": 20,
+        "imageSrc": "/estaleirinho.jpg"
     },
     {
         "id": 5,
@@ -52,7 +56,8 @@
         "motivo": "Níveis aceitáveis de qualidade",
         "descricao": "Praia tranquila e limpa",
         "temperaturaAgua": 22,
-        "avaliacoes": 14
+        "avaliacoes": 14,
+        "imageSrc": "/taquaras.jpg"
     },
     {
         "id": 6,
@@ -63,7 +68,8 @@
         "motivo": "Área preservada",
         "descricao": "Praia com pouca intervenção humana",
         "temperaturaAgua": 21,
-        "avaliacoes": 9
+        "avaliacoes": 9,
+        "imageSrc": "/taquarinhas.jpg"
     },
     {
         "id": 7,
@@ -74,7 +80,8 @@
         "motivo": "Boa circulação de água",
         "descricao": "Muito frequentada por surfistas",
         "temperaturaAgua": 23,
-        "avaliacoes": 30
+        "avaliacoes": 30,
+        "imageSrc": "/brava.webp"
     },
     {
         "id": 8,
@@ -85,7 +92,8 @@
         "motivo": "Contaminação detectada",
         "descricao": "Evitar banho até nova análise",
         "temperaturaAgua": 23,
-        "avaliacoes": 11
+        "avaliacoes": 11,
+        "imageSrc": "/cbeçudas.jpg"
     },
     {
         "id": 9,
@@ -96,7 +104,8 @@
         "motivo": "Qualidade dentro dos padrões",
         "descricao": "Extensa faixa de areia e boa balneabilidade",
         "temperaturaAgua": 23,
-        "avaliacoes": 16
+        "avaliacoes": 16,
+        "imageSrc": "/nvega.jpg"
     },
     {
         "id": 10,
@@ -107,6 +116,7 @@
         "motivo": "Índice elevado de poluentes",
         "descricao": "Não recomendada para banho",
         "temperaturaAgua": 22,
-        "avaliacoes": 8
+        "avaliacoes": 8,
+        "imageSrc": "/atalaia.webp"
     }
 ]

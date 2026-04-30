@@ -1,24 +1,69 @@
 "use client"
 
 import { CalendarDays, Search } from 'lucide-react';
+
 import { Nunito } from 'next/font/google';
 import type { AppProps } from 'next/app';
 import Image from 'next/image';
+
 import logo from '@/public/logo.png'
+
 import { motion } from 'motion/react';
+
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+
 import Dropdown from '@/app/components/Dropdown'
+import PraiaCard from './components/PraiaCard';
+
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
+
+import praias from '@/app/data/praias.json'
+import { useWeather } from './hooks/useWeather';
+
 
 const nunito = Nunito({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800']
 })
 
+function getData() {
+  const now = new Date()
+  now.setHours(now.getHours() - 1)
+
+  const nowUpdate = now.toLocaleString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  })
+
+  return nowUpdate
+}
 
 export default function Home({ Component, pageProps }: AppProps) {
+
+  const [statusFilter, setStatusFilter] = useState<"Todas" | "Própria" | "Imprópria">("Todas")
+  const [search, setSearch] = useState("")
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null)
+
+  const filtered = praias
+    .filter((p) => {
+      const matchSearch = p.nome.toLowerCase().includes(search.toLowerCase())
+      const matchStatus = statusFilter === "Todas" || p.status === statusFilter
+      return matchSearch && matchStatus
+    }).sort((a, b) => {
+      if (sortOrder === "asc") return a.avaliacoes - b.avaliacoes
+      if (sortOrder === "desc") return b.avaliacoes - a.avaliacoes
+      return 0
+    })
+
+  const weather = useWeather()
+
   return (
-    <main className={nunito.className}>
+    <main className={cn(nunito.className, "h-screen")}>
 
       {/* HEADER */}
       <div className="flex justify-between px-8 py-4 items-center">
@@ -30,7 +75,11 @@ export default function Home({ Component, pageProps }: AppProps) {
           </div>
         </div>
         <div>
-          <h1>24C ensolarado</h1>
+          {weather ? (
+            <h1 className='text-lg font-medium'>{weather.icon} {weather.temp}°C</h1>
+          ) : (
+            <span className='text-sm text-gray-400'>carregando...</span>
+          )}
         </div>
       </div>
 
@@ -47,7 +96,7 @@ export default function Home({ Component, pageProps }: AppProps) {
               <CalendarDays color='#1d3441' />
               <div>
                 <p className='text-xs text-[#1d3441] font-semibold'>Última atualização</p>
-                <p >28/04/2026 13:37</p>
+                <p>{getData()}</p>
               </div>
             </div>
           </div>
@@ -57,25 +106,32 @@ export default function Home({ Component, pageProps }: AppProps) {
       {/* SEARCH/FILTRO */}
       <div className='container mx-auto py-16'>
         <div className='flex items-center justify-evenly'>
-          <div className="relative w-full max-w-sm border-1 border-[#cacaca] rounded">
+          <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
 
             <Input
               placeholder="Buscar praia..."
               className="pl-10"
+              type='text'
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </div>
           <div className='flex gap-4'>
-            <Button className='rounded-full px-8 py-6 cursor-pointer transition-colors duration-300'>Todas</Button>
-            <Button className='rounded-full px-8 py-6 cursor-pointer transition-colors duration-300'>Próprias</Button>
-            <Button className='rounded-full px-8 py-6 cursor-pointer transition-colors duration-300'>Impróprias</Button>
+            <Button onClick={() => setStatusFilter("Todas")} className='rounded-full px-8 py-6 cursor-pointer text-gray-500 border-1 border-gray bg-transparent transition-colors duration-300'>Todas</Button>
+            <Button onClick={() => setStatusFilter("Própria")} className='rounded-full px-8 py-6 cursor-pointer text-gray-500 bg-transparent border-1 border-gray transition-colors duration-300'>Próprias</Button>
+            <Button onClick={() => setStatusFilter("Imprópria")} className='rounded-full px-8 py-6 cursor-pointer text-gray-500 bg-transparent border-1 border-gray transition-colors duration-300'>Impróprias</Button>
           </div>
-
-          <Dropdown />
+          <Dropdown onSortChange={setSortOrder} />
         </div>
-
       </div>
 
+      {/* CARDS */}
+      <div className='grid grid-cols-1 md:grid-cols-2 place-items-center gap-8 container mx-auto'>
+        {filtered.map((p) => (
+          <PraiaCard key={p.id} praia={p} />
+        ))}
+      </div>
     </main>
   );
 }

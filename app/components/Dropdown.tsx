@@ -1,14 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
-export default function Dropdown() {
+interface DropdownProps {
+    onSortChange: (order: "asc" | "desc") => void
+}
+
+export default function Dropdown({ onSortChange }: DropdownProps) {
     return <DropdownMenu>
         <DropdownMenuTrigger asChild>
-            <Button variant="outline">Ordenar</Button>
+            <Button variant="outline" className="text-gray-500">Ordenar</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-            <DropdownMenuItem>Melhores avaliações</DropdownMenuItem>
-            <DropdownMenuItem>Piores avaliações</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onSortChange("desc")}>Mais avaliadas</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onSortChange("asc")}>Menos avaliadas</DropdownMenuItem>
         </DropdownMenuContent>
     </DropdownMenu>
 }
